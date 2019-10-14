@@ -27,8 +27,19 @@ function setup () {
 function draw () {
   background(255);
 
-  var targetR = map(temperature,20,30,0,300);
+  //calculate the radius
+  var targetR = map(temperature,20,30,30,300);
   r = ease(r,targetR);
+
+
+  //calculate the color
+  var amt = map(r,30,300,0,1);
+  var fromCol = color(255,255,0);
+  var toCol = color(255,0,0);
+  var col = lerpColor(fromCol, toCol, amt);
+
+  noStroke();
+  fill(col);
   ellipse(width/2,height/2,r);
 }
 
