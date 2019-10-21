@@ -4,7 +4,7 @@ var r = 0;
 
 
 function setup () {
-  createCanvas(800, 600);
+  createCanvas(windowWidth, windowHeight);
 
   var client = mqtt.connect('mqtt://aeba5ae7:98e21bb6bccdb957@broker.shiftr.io', {
     clientId: 'vizinviz-simple-circle'
@@ -28,12 +28,12 @@ function draw () {
   background(255);
 
   //calculate the radius
-  var targetR = map(temperature,20,30,30,300);
+  var targetR = map(temperature,20,30,20,width/2);
   r = ease(r,targetR);
 
 
   //calculate the color
-  var amt = map(r,30,300,0,1);
+  var amt = map(r,30,width/2,0,1);
   var fromCol = color(255,255,0);
   var toCol = color(255,0,0);
   var col = lerpColor(fromCol, toCol, amt);
